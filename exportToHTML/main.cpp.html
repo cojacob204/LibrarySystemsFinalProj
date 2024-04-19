@@ -1,0 +1,410 @@
+<html>
+<head>
+<title>main.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #b3ae60;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #cf8e6d;}
+.s4 { color: #bcbec4;}
+.s5 { color: #2aacb8;}
+.s6 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">#include </span><span class="s2">&lt;iostream&gt;</span>
+<span class="s3">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+
+<span class="s3">class </span><span class="s1">books</span><span class="s4">{</span>
+<span class="s3">public</span><span class="s4">:</span>
+    <span class="s1">string title</span><span class="s4">;</span>
+    <span class="s3">int </span><span class="s1">id</span><span class="s4">;</span>
+<span class="s4">};</span>
+
+<span class="s3">class </span><span class="s1">account </span><span class="s4">{</span>
+<span class="s3">private</span><span class="s4">:</span>
+    <span class="s1">string password</span><span class="s4">;</span>
+<span class="s3">public</span><span class="s4">:</span>
+    <span class="s1">string fname</span><span class="s4">;</span>
+    <span class="s1">string lname</span><span class="s4">;</span>
+    <span class="s1">string titleout</span><span class="s4">[</span><span class="s5">2</span><span class="s4">] = {</span><span class="s2">&quot;None&quot;</span><span class="s4">,</span><span class="s2">&quot;None&quot;</span><span class="s4">};</span>
+    <span class="s3">unsigned int </span><span class="s1">idout</span><span class="s4">[</span><span class="s5">2</span><span class="s4">] = {</span><span class="s5">0</span><span class="s4">,</span><span class="s5">0</span><span class="s4">};</span>
+    <span class="s3">int </span><span class="s1">numbook</span><span class="s4">=</span><span class="s5">0</span><span class="s4">;</span>
+
+    <span class="s6">//Private Functions//</span>
+    <span class="s3">void </span><span class="s1">setpass</span><span class="s4">(</span><span class="s1">string p</span><span class="s4">){</span>
+        <span class="s1">password</span><span class="s4">=</span><span class="s1">p</span><span class="s4">;</span>
+    <span class="s4">}</span>
+    <span class="s3">bool </span><span class="s1">login</span><span class="s4">(</span><span class="s1">string fn</span><span class="s4">,</span><span class="s1">string ln</span><span class="s4">,</span><span class="s1">string p</span><span class="s4">){</span>
+        <span class="s3">bool </span><span class="s1">log</span><span class="s4">=</span><span class="s3">false</span><span class="s4">;</span>
+        <span class="s3">if</span><span class="s4">(</span><span class="s1">fn</span><span class="s4">==</span><span class="s1">fname </span><span class="s4">&amp;&amp; </span><span class="s1">ln</span><span class="s4">==</span><span class="s1">lname </span><span class="s4">&amp;&amp; </span><span class="s1">p</span><span class="s4">==</span><span class="s1">password</span><span class="s4">){</span>
+            <span class="s1">log</span><span class="s4">=</span><span class="s3">true</span><span class="s4">;</span>
+            <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">***Access Granted***</span><span class="s3">\n\n</span><span class="s2">***Welcome &quot;</span><span class="s4">&lt;&lt;</span><span class="s1">fn</span><span class="s4">&lt;&lt;</span><span class="s2">&quot; &quot;</span><span class="s4">&lt;&lt;</span><span class="s1">ln</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;***</span><span class="s3">\n\n</span><span class="s2">&quot;</span><span class="s4">;}</span>
+        <span class="s3">else</span><span class="s4">;</span>
+        <span class="s3">return </span><span class="s1">log</span><span class="s4">;</span>
+    <span class="s4">}</span>
+    <span class="s3">void </span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">string title</span><span class="s4">,</span><span class="s3">int </span><span class="s1">id</span><span class="s4">){</span>
+        <span class="s3">if</span><span class="s4">(</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">]==</span><span class="s2">&quot;None&quot;</span><span class="s4">) {</span>
+            <span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] = </span><span class="s1">title</span><span class="s4">;</span>
+            <span class="s1">idout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] = </span><span class="s1">id</span><span class="s4">;</span>
+            <span class="s1">numbook </span><span class="s4">+= </span><span class="s5">1</span><span class="s4">;</span>
+        <span class="s4">}</span>
+        <span class="s3">else </span><span class="s1">addbook2</span><span class="s4">(</span><span class="s1">title</span><span class="s4">, </span><span class="s1">id</span><span class="s4">);</span>
+    <span class="s4">}</span>
+    <span class="s3">void </span><span class="s1">addbook2</span><span class="s4">(</span><span class="s1">string title</span><span class="s4">,</span><span class="s3">int </span><span class="s1">id</span><span class="s4">){</span>
+        <span class="s3">if</span><span class="s4">(</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">]==</span><span class="s2">&quot;None&quot;</span><span class="s4">) {</span>
+            <span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">] = </span><span class="s1">title</span><span class="s4">;</span>
+            <span class="s1">idout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">] = </span><span class="s1">id</span><span class="s4">;</span>
+            <span class="s1">numbook </span><span class="s4">+= </span><span class="s5">1</span><span class="s4">;</span>
+        <span class="s4">}</span>
+        <span class="s3">else </span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">title</span><span class="s4">, </span><span class="s1">id</span><span class="s4">);</span>
+    <span class="s4">}</span>
+    <span class="s3">void </span><span class="s1">removebook</span><span class="s4">(</span><span class="s3">int </span><span class="s1">i</span><span class="s4">){</span>
+        <span class="s1">titleout</span><span class="s4">[</span><span class="s1">i</span><span class="s4">-</span><span class="s5">1</span><span class="s4">]=</span><span class="s2">&quot;None&quot;</span><span class="s4">;</span>
+        <span class="s1">idout</span><span class="s4">[</span><span class="s1">i</span><span class="s4">-</span><span class="s5">1</span><span class="s4">]=</span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s1">numbook</span><span class="s4">-=</span><span class="s5">1</span><span class="s4">;</span>
+    <span class="s4">}</span>
+<span class="s4">};</span>
+
+<span class="s3">int </span><span class="s1">main</span><span class="s4">() {</span>
+    <span class="s6">//Variables//</span>
+    <span class="s3">unsigned int </span><span class="s1">uin </span><span class="s4">= </span><span class="s5">5</span><span class="s4">;       </span><span class="s6">//User Input Variable//</span>
+    <span class="s3">unsigned int </span><span class="s1">rc</span><span class="s4">, </span><span class="s1">i</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">;    </span><span class="s6">//Used for Return and Checkout input//</span>
+    <span class="s1">string bt</span><span class="s4">;                  </span><span class="s6">//Used for Return and Checkout input//</span>
+    <span class="s1">string fname</span><span class="s4">, </span><span class="s1">lname</span><span class="s4">, </span><span class="s1">pass</span><span class="s4">;  </span><span class="s6">//Login//</span>
+    <span class="s3">int </span><span class="s1">catin</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">;                  </span><span class="s6">//Used in Catalogue//</span>
+    <span class="s1">string </span><span class="s4">*</span><span class="s1">ct</span><span class="s4">;               </span><span class="s6">//Used in Catalogue//</span>
+    <span class="s3">bool </span><span class="s1">log </span><span class="s4">= </span><span class="s3">false</span><span class="s4">, </span><span class="s1">log2 </span><span class="s4">= </span><span class="s3">false</span><span class="s4">, </span><span class="s1">log3 </span><span class="s4">= </span><span class="s3">false</span><span class="s4">; </span><span class="s6">//Login Access//</span>
+
+    <span class="s6">//Books in System//</span>
+    <span class="s1">books b1</span><span class="s4">;</span>
+    <span class="s1">b1</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;To Kill a Mockingbird&quot;</span><span class="s4">;</span>
+    <span class="s1">b1</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">1245</span><span class="s4">;</span>
+
+    <span class="s1">books b2</span><span class="s4">;</span>
+    <span class="s1">b2</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;The Fox and the Hound&quot;</span><span class="s4">;</span>
+    <span class="s1">b2</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">1265</span><span class="s4">;</span>
+
+    <span class="s1">books b3</span><span class="s4">;</span>
+    <span class="s1">b3</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;Fellowship of the Ring&quot;</span><span class="s4">;</span>
+    <span class="s1">b3</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">1589</span><span class="s4">;</span>
+
+    <span class="s1">books b4</span><span class="s4">;</span>
+    <span class="s1">b4</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;Harry Potter and the Sorcerer's Stone&quot;</span><span class="s4">;</span>
+    <span class="s1">b4</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">1934</span><span class="s4">;</span>
+
+    <span class="s1">books b5</span><span class="s4">;</span>
+    <span class="s1">b5</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;Ender's Game&quot;</span><span class="s4">;</span>
+    <span class="s1">b5</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">2099</span><span class="s4">;</span>
+
+    <span class="s1">books b6</span><span class="s4">;</span>
+    <span class="s1">b6</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;Fahrenheit 451&quot;</span><span class="s4">;</span>
+    <span class="s1">b6</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">1251</span><span class="s4">;</span>
+
+    <span class="s1">books b7</span><span class="s4">;</span>
+    <span class="s1">b7</span><span class="s4">.</span><span class="s1">title </span><span class="s4">= </span><span class="s2">&quot;Eragon&quot;</span><span class="s4">;</span>
+    <span class="s1">b7</span><span class="s4">.</span><span class="s1">id </span><span class="s4">= </span><span class="s5">1599</span><span class="s4">;</span>
+
+    <span class="s1">string catalogue</span><span class="s4">[</span><span class="s5">7</span><span class="s4">] = {</span><span class="s1">b1</span><span class="s4">.</span><span class="s1">title</span><span class="s4">,</span><span class="s1">b2</span><span class="s4">.</span><span class="s1">title</span><span class="s4">,</span><span class="s1">b3</span><span class="s4">.</span><span class="s1">title</span><span class="s4">,</span><span class="s1">b4</span><span class="s4">.</span><span class="s1">title</span><span class="s4">,</span><span class="s1">b5</span><span class="s4">.</span><span class="s1">title</span><span class="s4">,</span><span class="s1">b6</span><span class="s4">.</span><span class="s1">title</span><span class="s4">,</span><span class="s1">b7</span><span class="s4">.</span><span class="s1">title</span><span class="s4">};</span>
+    <span class="s3">int </span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s5">7</span><span class="s4">] = {</span><span class="s1">b1</span><span class="s4">.</span><span class="s1">id</span><span class="s4">,</span><span class="s1">b2</span><span class="s4">.</span><span class="s1">id</span><span class="s4">,</span><span class="s1">b3</span><span class="s4">.</span><span class="s1">id</span><span class="s4">,</span><span class="s1">b4</span><span class="s4">.</span><span class="s1">id</span><span class="s4">,</span><span class="s1">b5</span><span class="s4">.</span><span class="s1">id</span><span class="s4">,</span><span class="s1">b6</span><span class="s4">.</span><span class="s1">id</span><span class="s4">,</span><span class="s1">b7</span><span class="s4">.</span><span class="s1">id</span><span class="s4">};</span>
+
+    <span class="s6">//User Accounts in System//</span>
+    <span class="s1">account a1</span><span class="s4">, </span><span class="s1">a2</span><span class="s4">, </span><span class="s1">a3</span><span class="s4">;</span>
+
+    <span class="s1">a1</span><span class="s4">.</span><span class="s1">fname </span><span class="s4">= </span><span class="s2">&quot;James&quot;</span><span class="s4">;</span>
+    <span class="s1">a1</span><span class="s4">.</span><span class="s1">lname </span><span class="s4">= </span><span class="s2">&quot;Madison&quot;</span><span class="s4">;</span>
+    <span class="s1">a1</span><span class="s4">.</span><span class="s1">setpass</span><span class="s4">(</span><span class="s2">&quot;Deco245$&quot;</span><span class="s4">);</span>
+    <span class="s1">a1</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">b1</span><span class="s4">.</span><span class="s1">title</span><span class="s4">, </span><span class="s1">b1</span><span class="s4">.</span><span class="s1">id</span><span class="s4">);</span>
+    <span class="s1">a1</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(</span><span class="s1">b2</span><span class="s4">.</span><span class="s1">title</span><span class="s4">, </span><span class="s1">b2</span><span class="s4">.</span><span class="s1">id</span><span class="s4">);</span>
+
+    <span class="s1">a2</span><span class="s4">.</span><span class="s1">fname </span><span class="s4">= </span><span class="s2">&quot;Rebecca&quot;</span><span class="s4">;</span>
+    <span class="s1">a2</span><span class="s4">.</span><span class="s1">lname </span><span class="s4">= </span><span class="s2">&quot;Sutherland&quot;</span><span class="s4">;</span>
+    <span class="s1">a2</span><span class="s4">.</span><span class="s1">setpass</span><span class="s4">(</span><span class="s2">&quot;ILOVECATS1234&quot;</span><span class="s4">);</span>
+    <span class="s1">a2</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">b4</span><span class="s4">.</span><span class="s1">title</span><span class="s4">, </span><span class="s1">b4</span><span class="s4">.</span><span class="s1">id</span><span class="s4">);</span>
+
+    <span class="s1">a3</span><span class="s4">.</span><span class="s1">fname </span><span class="s4">= </span><span class="s2">&quot;Loretta&quot;</span><span class="s4">;</span>
+    <span class="s1">a3</span><span class="s4">.</span><span class="s1">lname </span><span class="s4">= </span><span class="s2">&quot;Smith&quot;</span><span class="s4">;</span>
+    <span class="s1">a3</span><span class="s4">.</span><span class="s1">setpass</span><span class="s4">(</span><span class="s2">&quot;P41Hn$&quot;</span><span class="s4">);</span>
+
+    <span class="s6">//Login//</span>
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Library Services</span><span class="s3">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+    <span class="s3">while </span><span class="s4">(!</span><span class="s1">log </span><span class="s4">&amp;&amp; !</span><span class="s1">log2 </span><span class="s4">&amp;&amp; !</span><span class="s1">log3</span><span class="s4">) {</span>
+        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Login</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;Enter Full Name:&quot;</span><span class="s4">;</span>
+        <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">fname </span><span class="s4">&gt;&gt; </span><span class="s1">lname</span><span class="s4">;</span>
+        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter Password:&quot;</span><span class="s4">;</span>
+        <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">pass</span><span class="s4">;</span>
+        <span class="s1">log </span><span class="s4">= </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">login</span><span class="s4">(</span><span class="s1">fname</span><span class="s4">, </span><span class="s1">lname</span><span class="s4">, </span><span class="s1">pass</span><span class="s4">);</span>
+        <span class="s1">log2 </span><span class="s4">= </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">login</span><span class="s4">(</span><span class="s1">fname</span><span class="s4">, </span><span class="s1">lname</span><span class="s4">, </span><span class="s1">pass</span><span class="s4">);</span>
+        <span class="s1">log3 </span><span class="s4">= </span><span class="s1">a3</span><span class="s4">.</span><span class="s1">login</span><span class="s4">(</span><span class="s1">fname</span><span class="s4">, </span><span class="s1">lname</span><span class="s4">, </span><span class="s1">pass</span><span class="s4">);</span>
+        <span class="s3">if </span><span class="s4">(!</span><span class="s1">log </span><span class="s4">&amp;&amp; !</span><span class="s1">log2 </span><span class="s4">&amp;&amp; !</span><span class="s1">log3</span><span class="s4">)</span>
+            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">***Access Denied: Please Try Again***&quot;</span><span class="s4">;</span>
+    <span class="s4">}</span>
+
+    <span class="s6">//Main Menu//</span>
+    <span class="s3">while </span><span class="s4">(</span><span class="s1">uin </span><span class="s4">!= </span><span class="s5">0</span><span class="s4">) {</span>
+        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n\n</span><span class="s2">Main Menu</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;1. Books Checked Out</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;2. Return/Check Out</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;3. Catalogue</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;0. Close System</span><span class="s3">\n\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;**Enter a number to continue**</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+        <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">uin</span><span class="s4">;</span>
+
+        <span class="s6">//Account 1//</span>
+        <span class="s3">if </span><span class="s4">(</span><span class="s1">log</span><span class="s4">) {</span>
+            <span class="s3">switch </span><span class="s4">(</span><span class="s1">uin</span><span class="s4">) {</span>
+
+                <span class="s6">//Books Checked Out//</span>
+                <span class="s3">case </span><span class="s5">1</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Books Checked Out (Max=2): &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">&lt;&lt;</span>
+                         <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s3">if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">!= </span><span class="s5">0</span><span class="s4">) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Title:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                                                  <span class="s2">&quot;Id:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">idout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">idout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">];</span>
+                    <span class="s4">} </span><span class="s3">else </span><span class="s4">{</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;You have 0 books out&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+
+                    <span class="s6">//Book Return/Checkout//</span>
+                <span class="s3">case </span><span class="s5">2</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Select an Option from the list:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;1. Return</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;2. Check Out (Max=2)</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;3. Check Out (Catalogue)</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">rc</span><span class="s4">;</span>
+                    <span class="s3">if </span><span class="s4">(</span><span class="s1">rc </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Which book would you like to return?</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a1</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">i</span><span class="s4">;</span>
+                        <span class="s1">a1</span><span class="s4">.</span><span class="s1">removebook</span><span class="s4">(</span><span class="s1">i</span><span class="s4">);</span>
+                    <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">rc </span><span class="s4">== </span><span class="s5">2</span><span class="s4">){</span>
+                        <span class="s3">if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">2</span><span class="s4">)</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Maximum Checkout Reached.&quot;</span><span class="s4">;</span>
+                        <span class="s3">else if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter book Title and ID: &quot;</span><span class="s4">;</span>
+                            <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">bt </span><span class="s4">&gt;&gt; </span><span class="s1">bid</span><span class="s4">;</span>
+                            <span class="s1">a1</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(</span><span class="s1">bt</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">);</span>
+                        <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">0</span><span class="s4">) {</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter book Title and ID: &quot;</span><span class="s4">;</span>
+                            <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">bt </span><span class="s4">&gt;&gt; </span><span class="s1">bid</span><span class="s4">;</span>
+                            <span class="s1">a1</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">bt</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">);</span>
+                        <span class="s4">}</span>
+                    <span class="s4">}</span>
+                    <span class="s3">else if</span><span class="s4">(</span><span class="s1">rc</span><span class="s4">==</span><span class="s5">3</span><span class="s4">){</span>
+                        <span class="s3">if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">2</span><span class="s4">)</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Maximum Checkout Reached.&quot;</span><span class="s4">;</span>
+                        <span class="s3">else if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                            <span class="s1">a1</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(*</span><span class="s1">ct</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">);</span>
+                        <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">a1</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">0</span><span class="s4">) {</span>
+                            <span class="s1">a1</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(*</span><span class="s1">ct</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">);</span>
+                        <span class="s4">}</span>
+                    <span class="s4">}</span>
+                        <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+
+                <span class="s6">//Catalogue//</span>
+                <span class="s3">case </span><span class="s5">3</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Catalogue:&quot;</span>
+                            <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s3">for </span><span class="s4">(</span><span class="s3">int </span><span class="s1">k </span><span class="s4">= </span><span class="s5">0</span><span class="s4">; </span><span class="s1">k </span><span class="s4">&lt; </span><span class="s5">7</span><span class="s4">; </span><span class="s1">k</span><span class="s4">++) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt;(</span><span class="s1">k</span><span class="s4">-</span><span class="s5">1</span><span class="s4">)&lt;&lt;</span><span class="s2">&quot;: &quot;</span><span class="s4">&lt;&lt; </span><span class="s1">catalogue</span><span class="s4">[</span><span class="s1">k</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s1">k</span><span class="s4">]</span>
+                             <span class="s4">&lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;Enter the book number you would like to check out (enter 8 to continue without)&quot;</span><span class="s4">;</span>
+                    <span class="s1">cin</span><span class="s4">&gt;&gt;</span><span class="s1">catin</span><span class="s4">;</span>
+                    <span class="s3">if</span><span class="s4">(</span><span class="s1">catin</span><span class="s4">!=</span><span class="s5">8</span><span class="s4">) {</span>
+                        <span class="s1">ct </span><span class="s4">= &amp;</span><span class="s1">catalogue</span><span class="s4">[</span><span class="s1">catin</span><span class="s4">-</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cid </span><span class="s4">= &amp;</span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s1">catin</span><span class="s4">-</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">Your book choice has been saved.</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                              <span class="s2">&quot;Return to the </span><span class="s3">\&quot;</span><span class="s2">Checkout</span><span class="s3">\&quot; </span><span class="s2">screen to continue.&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s3">else</span><span class="s4">;</span>
+                <span class="s4">}</span>
+                <span class="s3">default</span><span class="s4">: {</span>
+                    <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+            <span class="s4">}</span>
+        <span class="s4">}</span>
+
+        <span class="s6">//Account 2//</span>
+        <span class="s3">else if </span><span class="s4">(</span><span class="s1">log2</span><span class="s4">) {</span>
+            <span class="s3">switch </span><span class="s4">(</span><span class="s1">uin</span><span class="s4">) {</span>
+
+                <span class="s6">//Books Checked Out//</span>
+                <span class="s3">case </span><span class="s5">1</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Books Checked Out (Max=2): &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">&lt;&lt;</span>
+                         <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s3">if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">!= </span><span class="s5">0</span><span class="s4">) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Title:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                                                  <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">Id:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">idout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">idout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">];}</span>
+                    <span class="s3">else </span><span class="s4">{</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;You have 0 books out&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+
+                <span class="s6">//Book Return/Checkout//</span>
+                <span class="s3">case </span><span class="s5">2</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Select an Option from the list:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;1. Return</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;2. Check Out (Max=2)</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;3. Check Out (Catalogue)</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">rc</span><span class="s4">;</span>
+                    <span class="s3">if </span><span class="s4">(</span><span class="s1">rc </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Which book would you like to return?</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">i</span><span class="s4">;</span>
+                        <span class="s1">a2</span><span class="s4">.</span><span class="s1">removebook</span><span class="s4">(</span><span class="s1">i</span><span class="s4">);</span>
+                    <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">rc </span><span class="s4">== </span><span class="s5">2</span><span class="s4">){</span>
+                        <span class="s3">if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">2</span><span class="s4">)</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Maximum Checkout Reached.&quot;</span><span class="s4">;</span>
+                        <span class="s3">else if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter book Title and ID: &quot;</span><span class="s4">;</span>
+                            <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">bt </span><span class="s4">&gt;&gt; </span><span class="s1">bid</span><span class="s4">;</span>
+                            <span class="s1">a2</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(</span><span class="s1">bt</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">);</span>
+                        <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">0</span><span class="s4">) {</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter book Title and ID: &quot;</span><span class="s4">;</span>
+                            <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">bt </span><span class="s4">&gt;&gt; </span><span class="s1">bid</span><span class="s4">;</span>
+                            <span class="s1">a2</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">bt</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">);</span>
+                        <span class="s4">}}</span>
+                    <span class="s3">else if</span><span class="s4">(</span><span class="s1">rc</span><span class="s4">==</span><span class="s5">3</span><span class="s4">){</span>
+                        <span class="s3">if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">2</span><span class="s4">)</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Maximum Checkout Reached.&quot;</span><span class="s4">;</span>
+                        <span class="s3">else if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                            <span class="s1">a2</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(*</span><span class="s1">ct</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">);</span>
+                        <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">a2</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">0</span><span class="s4">) {</span>
+                            <span class="s1">a2</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(*</span><span class="s1">ct</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">);</span>
+                        <span class="s4">}</span>
+                    <span class="s4">}</span>
+                        <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+
+                <span class="s6">//Catalogue//</span>
+                <span class="s3">case </span><span class="s5">3</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Catalogue:&quot;</span>
+                            <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s3">for </span><span class="s4">(</span><span class="s3">int </span><span class="s1">k </span><span class="s4">= </span><span class="s5">0</span><span class="s4">; </span><span class="s1">k </span><span class="s4">&lt; </span><span class="s5">7</span><span class="s4">; </span><span class="s1">k</span><span class="s4">++) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt;(</span><span class="s1">k</span><span class="s4">-</span><span class="s5">1</span><span class="s4">)&lt;&lt;</span><span class="s2">&quot;: &quot;</span><span class="s4">&lt;&lt; </span><span class="s1">catalogue</span><span class="s4">[</span><span class="s1">k</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s1">k</span><span class="s4">]</span>
+                             <span class="s4">&lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;Enter the book number you would like to check out (enter 8 to continue without):</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s1">cin</span><span class="s4">&gt;&gt;</span><span class="s1">catin</span><span class="s4">;</span>
+                    <span class="s3">if</span><span class="s4">(</span><span class="s1">catin</span><span class="s4">!=</span><span class="s5">8</span><span class="s4">) {</span>
+                        <span class="s1">ct </span><span class="s4">= &amp;</span><span class="s1">catalogue</span><span class="s4">[</span><span class="s1">catin</span><span class="s4">-</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cid </span><span class="s4">= &amp;</span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s1">catin</span><span class="s4">-</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">Your book choice has been saved.</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                              <span class="s2">&quot;Return to the </span><span class="s3">\&quot;</span><span class="s2">Checkout</span><span class="s3">\&quot; </span><span class="s2">screen to continue.&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s3">else</span><span class="s4">;</span>
+                <span class="s4">}</span>
+            <span class="s4">}</span>
+        <span class="s4">}</span>
+
+        <span class="s6">//Account 3//</span>
+        <span class="s3">else </span><span class="s4">{</span>
+            <span class="s3">switch </span><span class="s4">(</span><span class="s1">uin</span><span class="s4">) {</span>
+                <span class="s6">//Books Checked Out//</span>
+                <span class="s3">case </span><span class="s5">1</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Books Checked Out (Max=2): &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">&lt;&lt;</span>
+                         <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s3">if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">!= </span><span class="s5">0</span><span class="s4">) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Title:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a3</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a3</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                                                  <span class="s2">&quot;Id:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a3</span><span class="s4">.</span><span class="s1">idout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a3</span><span class="s4">.</span><span class="s1">idout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">];</span>
+                    <span class="s4">} </span><span class="s3">else </span><span class="s4">{</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;You have 0 books out&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+
+                <span class="s6">//Book Return/Checkout//</span>
+                <span class="s3">case </span><span class="s5">2</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Select an Option from the list:</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;1. Return</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;2. Check Out (Max=2)</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;3. Check Out (Catalogue)</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">rc</span><span class="s4">;</span>
+                    <span class="s3">if </span><span class="s4">(</span><span class="s1">rc </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Which book would you like to return?</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">0</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">a2</span><span class="s4">.</span><span class="s1">titleout</span><span class="s4">[</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">i</span><span class="s4">;</span>
+                        <span class="s1">a3</span><span class="s4">.</span><span class="s1">removebook</span><span class="s4">(</span><span class="s1">i</span><span class="s4">);</span>
+                    <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">rc </span><span class="s4">== </span><span class="s5">2</span><span class="s4">){</span>
+                        <span class="s3">if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">2</span><span class="s4">)</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Maximum Checkout Reached.&quot;</span><span class="s4">;</span>
+                        <span class="s3">else if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter book Title and ID: &quot;</span><span class="s4">;</span>
+                            <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">bt </span><span class="s4">&gt;&gt; </span><span class="s1">bid</span><span class="s4">;</span>
+                            <span class="s1">a3</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(</span><span class="s1">bt</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">);</span>
+                        <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">0</span><span class="s4">) {</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Enter book Title and ID: &quot;</span><span class="s4">;</span>
+                            <span class="s1">cin </span><span class="s4">&gt;&gt; </span><span class="s1">bt </span><span class="s4">&gt;&gt; </span><span class="s1">bid</span><span class="s4">;</span>
+                            <span class="s1">a3</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(</span><span class="s1">bt</span><span class="s4">, </span><span class="s1">bid</span><span class="s4">);</span>
+                        <span class="s4">}</span>
+                    <span class="s4">}</span>
+                    <span class="s3">else if</span><span class="s4">(</span><span class="s1">rc</span><span class="s4">==</span><span class="s5">3</span><span class="s4">){</span>
+                        <span class="s3">if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">2</span><span class="s4">)</span>
+                            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Maximum Checkout Reached.&quot;</span><span class="s4">;</span>
+                        <span class="s3">else if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">1</span><span class="s4">) {</span>
+                            <span class="s1">a3</span><span class="s4">.</span><span class="s1">addbook2</span><span class="s4">(*</span><span class="s1">ct</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">);</span>
+                        <span class="s4">} </span><span class="s3">else if </span><span class="s4">(</span><span class="s1">a3</span><span class="s4">.</span><span class="s1">numbook </span><span class="s4">== </span><span class="s5">0</span><span class="s4">) {</span>
+                            <span class="s1">a3</span><span class="s4">.</span><span class="s1">addbook1</span><span class="s4">(*</span><span class="s1">ct</span><span class="s4">, *</span><span class="s1">cid</span><span class="s4">);</span>
+                        <span class="s4">}</span>
+                    <span class="s4">}</span>
+                        <span class="s3">break</span><span class="s4">;</span>
+                <span class="s4">}</span>
+
+                <span class="s6">//Catalogue//</span>
+                <span class="s3">case </span><span class="s5">3</span><span class="s4">: {</span>
+                    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Catalogue:&quot;</span>
+                            <span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">-----------------------------------------</span><span class="s3">\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s3">for </span><span class="s4">(</span><span class="s3">int </span><span class="s1">k </span><span class="s4">= </span><span class="s5">0</span><span class="s4">; </span><span class="s1">k </span><span class="s4">&lt; </span><span class="s5">7</span><span class="s4">; </span><span class="s1">k</span><span class="s4">++) {</span>
+                        <span class="s1">cout </span><span class="s4">&lt;&lt;(</span><span class="s1">k</span><span class="s4">+</span><span class="s5">1</span><span class="s4">)&lt;&lt;</span><span class="s2">&quot;: &quot;</span><span class="s4">&lt;&lt; </span><span class="s1">catalogue</span><span class="s4">[</span><span class="s1">k</span><span class="s4">] &lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                             <span class="s4">&lt;&lt; </span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s1">k</span><span class="s4">]</span>
+                             <span class="s4">&lt;&lt; </span><span class="s2">&quot;</span><span class="s3">\n\n</span><span class="s2">&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;Enter the book number you would like to check out (enter 8 to continue without)&quot;</span><span class="s4">;</span>
+                    <span class="s1">cin</span><span class="s4">&gt;&gt;</span><span class="s1">catin</span><span class="s4">;</span>
+                    <span class="s3">if</span><span class="s4">(</span><span class="s1">catin</span><span class="s4">!=</span><span class="s5">8</span><span class="s4">) {</span>
+                        <span class="s1">ct </span><span class="s4">= &amp;</span><span class="s1">catalogue</span><span class="s4">[</span><span class="s1">catin</span><span class="s4">-</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cid </span><span class="s4">= &amp;</span><span class="s1">catalogueid</span><span class="s4">[</span><span class="s1">catin</span><span class="s4">-</span><span class="s5">1</span><span class="s4">];</span>
+                        <span class="s1">cout</span><span class="s4">&lt;&lt;</span><span class="s2">&quot;</span><span class="s3">\n</span><span class="s2">Your book choice has been saved.</span><span class="s3">\n</span><span class="s2">&quot;</span>
+                              <span class="s2">&quot;Return to the </span><span class="s3">\&quot;</span><span class="s2">Checkout</span><span class="s3">\&quot; </span><span class="s2">screen to continue.&quot;</span><span class="s4">;</span>
+                    <span class="s4">}</span>
+                    <span class="s3">else</span><span class="s4">;</span>
+                <span class="s4">}</span>
+                <span class="s3">default</span><span class="s4">: {</span>
+                <span class="s4">}</span>
+            <span class="s4">}</span>
+        <span class="s4">}</span>
+    <span class="s4">}</span>
+<span class="s4">}</span></pre>
+</body>
+</html>
